@@ -1,0 +1,25 @@
+:root{
+    --color-primary: #000;
+    --color-highlight: #F476A1;
+    --color-background: #FFFFFF;
+
+    --color-button-bridal-bouquet: #6A7625;
+    --color-button-bridal-bouquet-hover: #5A6615;
+    --color-button-bridal-bouquet-text: #FFFFFF;
+    --color-button-look-date: #FFFFFF;
+    --color-button-look-date-border: #F476A1;
+    --color-button-look-date-text: #F476A1;
+    --color-button-booking: #F476A1;
+    --color-button-booking-text: #FFFFFF;
+
+    --color-calendar-available: #A8B86A;
+    --color-calendar-day: #9A9A9A;
+    --color-calendar-nav: #C8C8C8;
+
+    --font-primary: 'Playfair Display', serif;
+
+    --container-max-width: 1200px;
+    --container-landing-max-width: 1700px;
+    --container-px: 40px;
+    --transition:0.3s ease;
+}

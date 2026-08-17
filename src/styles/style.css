@@ -146,21 +146,21 @@ body{
     min-height: 100svh;
     height: 100svh;
     display: flex;
-    align-items: center; /* текст по середине по вертикали */
+    align-items: center; /* Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â´ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ */
     overflow: hidden;
 }
 .hero-content {
     position: relative;
     z-index: 3;
-    width: 100%; /* тянется как container — левый край как у nav */
+    width: 100%; /* Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº container ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¹ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº Ãƒâ€˜Ã†â€™ nav */
     transform: translateY(-130px);
-    pointer-events: none; /* не перехватывать курсор над букетом */
+    pointer-events: none; /* ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Â¦ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚ÂºÃƒâ€˜Ã†â€™Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Â´ ÃƒÂÃ‚Â±Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ */
 }
 .hero-content-inner {
-    max-width: 1060px; /* заголовок/текст не на всю ширину */
+    max-width: 1060px; /* ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº/Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â²Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã…Â½ Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½Ãƒâ€˜Ã†â€™ */
 }
 .hero-content .btn {
-    pointer-events: auto; /* кнопка кликабельна */
+    pointer-events: auto; /* ÃƒÂÃ‚ÂºÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂºÃƒÂÃ‚Â° ÃƒÂÃ‚ÂºÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° */
 }
 .hero-decoration-wrap {
     position: absolute;
@@ -182,11 +182,11 @@ body{
     line-height: 1;
     white-space: nowrap;
     font-weight: 600;
-    /* низ глифов к низу экрана (em — масштабируется с кеглем) */
+    /* ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â· ÃƒÂÃ‚Â³ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â² ÃƒÂÃ‚Âº ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·Ãƒâ€˜Ã†â€™ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° (em ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‹â€ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â Ãƒâ€˜Ã‚Â ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒÂÃ‚Â³ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼) */
     transform: translateY(0.03em);
 }
 
-/* <1600: по ширине контейнера; на низких экранах — ещё и по svh */
+/* <1600: ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°; ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Â¦ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â¦ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Â°Ãƒâ€˜Ã¢â‚¬Ëœ ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ svh */
 @media (max-width: 1600px) {
     .hero-decoration {
         font-size: min(
@@ -197,7 +197,7 @@ body{
     }
 }
 
-/* планшет↓: поднять от края, целиком в первом экране */
+/* ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â»ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“: ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ÃƒÂÃ‚Â½Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â, Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â² ÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ */
 @media (max-width: 1024px) {
     .hero-decoration-wrap {
         bottom: 3.5svh;
@@ -215,7 +215,7 @@ body{
     }
 }
 
-/* низкие / горизонтальные экраны (напр. 1024×600): контент сверху, знак читаемый */
+/* ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ÃƒÂÃ‚Âµ / ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ (ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬. 1024ÃƒÆ’Ã¢â‚¬â€600): ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â¦Ãƒâ€˜Ã†â€™, ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Âº Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ */
 @media (max-height: 700px) and (min-width: 1024px) {
     .hero {
         align-items: flex-start;
@@ -242,7 +242,7 @@ body{
 
     .hero-decoration-wrap {
         bottom: 10.5svh;
-        max-height: none; /* не обрезать знак */
+        max-height: none; /* ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â·ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Âº */
     }
 
     .hero-decoration {
@@ -293,13 +293,14 @@ body{
         );
     }
 }
+
 @property --reveal-radius {
     syntax: '<length>';
     inherits: true;
     initial-value: 0px;
 }
 
-/* Spotlight-reveal: базовый кадр + круглая «линза» без стекла */
+/* Spotlight-reveal: ÃƒÂÃ‚Â±ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â€šÂ¬ + ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â³ÃƒÂÃ‚Â»ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â Ãƒâ€šÃ‚Â«ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°Ãƒâ€šÃ‚Â» ÃƒÂÃ‚Â±ÃƒÂÃ‚ÂµÃƒÂÃ‚Â· Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒÂÃ‚Â»ÃƒÂÃ‚Â° */
 .hero-image-reveal {
     --mx: 50%;
     --my: 50%;
@@ -308,7 +309,7 @@ body{
     --hero-img-w: var(--hero-img-base-w);
 
     position: absolute;
-    /* горизонталь всегда от базовых 1150px, scale картинки — отдельно */
+    /* ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â²Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂµÃƒÂÃ‚Â³ÃƒÂÃ‚Â´ÃƒÂÃ‚Â° ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â±ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã¢â‚¬Â¦ 1150px, scale ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ */
     left: max(
         calc(100% - var(--hero-img-base-w)),
         calc(1600px - var(--hero-img-base-w))
@@ -365,7 +366,7 @@ body{
     will-change: --reveal-radius;
 }
 
-/* лёгкое «стекло» на базовом кадре, чтобы снятие стекла читалось */
+/* ÃƒÂÃ‚Â»Ãƒâ€˜Ã¢â‚¬ËœÃƒÂÃ‚Â³ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ Ãƒâ€šÃ‚Â«Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾Ãƒâ€šÃ‚Â» ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â±ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Âµ, Ãƒâ€˜Ã¢â‚¬Â¡Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â½Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚Âµ Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒÂÃ‚Â»ÃƒÂÃ‚Â° Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã…â€™ */
 .hero-image--base {
     filter: saturate(0.92) contrast(0.98);
     transition: filter 0.35s ease;
@@ -382,7 +383,7 @@ body{
 }
 .hero-title span {
     display: block;
-    width: fit-content; /* линия = длина строки */
+    width: fit-content; /* ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â = ÃƒÂÃ‚Â´ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ */
     border-bottom: 1px solid var(--color-primary);
 }
 .hero-description {
@@ -405,7 +406,7 @@ body{
     padding-top: clamp(40px, 8vw, 100px);
 }
 
-/* как .portfolio-photos > *: колонки реально сжимаются */
+/* ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº .portfolio-photos > *: ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¶ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°Ãƒâ€˜Ã…Â½Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â */
 .about-grid > * {
     min-width: 0;
     width: 100%;
@@ -421,9 +422,9 @@ body{
 }
 
 .about-right {
-    /* «Свадебные профи» ниже левого заголовка, как на макете */
+    /* Ãƒâ€šÃ‚Â«ÃƒÂÃ‚Â¡ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â±ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¸Ãƒâ€šÃ‚Â» ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¶ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°, ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ */
     padding-top: clamp(48px, 9.5vw, 112px);
-    /* stretch — фото сжимаются с колонкой; заголовок отдельно вправо */
+    /* stretch ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¶ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°Ãƒâ€˜Ã…Â½Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â Ãƒâ€˜Ã‚Â ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹; ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ */
     align-items: stretch;
 }
 
@@ -502,7 +503,7 @@ body{
     min-width: 0;
     box-sizing: border-box;
     text-align: center;
-    /* % от ширины колонки — как fluid в portfolio, не от vw экрана */
+    /* % ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº fluid ÃƒÂÃ‚Â² portfolio, ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ vw Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° */
     padding: clamp(28px, 18%, 112px) clamp(10px, 4%, 24px);
     font-size: clamp(10px, 2.05vw, 25px);
     line-height: 1.25;
@@ -543,7 +544,7 @@ body{
     list-style: none;
     margin: 0;
     padding: 0;
-    max-width: none; /* список на всю ширину контейнера */
+    max-width: none; /* Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â²Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã…Â½ Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½Ãƒâ€˜Ã†â€™ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â° */
 }
   
 .works-item {
@@ -555,14 +556,14 @@ body{
     margin-bottom: 0;
 }
 
-/* 02 и 04 — весь блок пункта уезжает вправо */
+/* 02 ÃƒÂÃ‚Â¸ 04 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã…â€™ ÃƒÂÃ‚Â±ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº ÃƒÂÃ‚Â¿Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â° Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂµÃƒÂÃ‚Â·ÃƒÂÃ‚Â¶ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ */
 .works-item--right {
     margin-left: auto;
     text-align: right;
 }
 
 .works-item--right .works-num {
-    margin-right: 12px; /* такой же зазор до текста, как у 01 и 03 */
+    margin-right: 12px; /* Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¶ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°, ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº Ãƒâ€˜Ã†â€™ 01 ÃƒÂÃ‚Â¸ 03 */
     margin-left: 0;
 }
   
@@ -679,7 +680,7 @@ body{
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(12px, 2vw, 24px);
-    align-items: end; /* общая нижняя граница фото; правое выше */
+    align-items: end; /* ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â°ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¶ÃƒÂÃ‚Â½Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â ÃƒÂÃ‚Â³Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â° Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾; ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Âµ */
 }
 
 .portfolio-photos > * {
@@ -701,8 +702,8 @@ body{
 .portfolio-title {
     position: absolute;
     left: 0;
-    bottom: 100%; /* над левым фото, вне потока */
-    margin: 0 0 32px; /* отступ до фото = как у «С событий» */
+    bottom: 100%; /* ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Â´ ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¼ Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾, ÃƒÂÃ‚Â²ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂºÃƒÂÃ‚Â° */
+    margin: 0 0 32px; /* ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â¿ ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¾ Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ = ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Âº Ãƒâ€˜Ã†â€™ Ãƒâ€šÃ‚Â«ÃƒÂÃ‚Â¡ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¹Ãƒâ€šÃ‚Â» */
     font-size: clamp(40px, 11vw, 170px);
     font-weight: 400;
     font-style: italic;
@@ -739,14 +740,14 @@ body{
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(12px, 2vw, 24px);
-    align-items: start; /* верхи колонок в одну линию */
+    align-items: start; /* ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â¦ÃƒÂÃ‚Â¸ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº ÃƒÂÃ‚Â² ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ÃƒÂÃ‚Â½Ãƒâ€˜Ã†â€™ ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã…Â½ */
 }
 
 .portfolio-col-bottom--left,
 .portfolio-col-bottom--right {
     display: flex;
     flex-direction: column;
-    gap: clamp(12px, 2vw, 24px); /* щели между фото в колонке */
+    gap: clamp(12px, 2vw, 24px); /* Ãƒâ€˜Ã¢â‚¬Â°ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¶ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â² ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒÂÃ‚Âµ */
     min-width: 0;
 }
 
@@ -757,7 +758,7 @@ body{
     object-fit: cover;
 }
 
-/* пропорции под макет: слева 2 фото, справа 3 */
+/* ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡: Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²ÃƒÂÃ‚Â° 2 Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾, Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚Â° 3 */
 .portfolio-col-bottom--left .portfolio-image-bottom:first-child {
     aspect-ratio: 3 / 4.8;
 }
@@ -979,6 +980,14 @@ body{
     padding: clamp(10px, 2vw, 12px) clamp(14px, 3vw, 24px);
     font-size: clamp(10px, 2.5vw, 12px);
     white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.look-date-book:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 .footer {
@@ -1064,9 +1073,515 @@ body{
     pointer-events: none;
 }
 
+
+.booking-panel {
+    width: 100%;
+    background: #fff;
+    padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px);
+    scroll-margin-top: 88px;
+}
+
+.booking-panel-inner {
+    position: relative;
+    max-width: 720px;
+    margin-inline: auto;
+}
+
+.booking-title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.booking-close {
+    flex: 0 0 auto;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-bottom: 6px;
+}
+
+.booking-close img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 3vw, 32px);
+}
+
+.booking-heading {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+.booking-heading--contacts {
+    align-self: flex-end;
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.booking-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 200px) minmax(0, 1fr);
+    gap: 10px 20px;
+    align-items: center;
+}
+
+.booking-row--top {
+    align-items: start;
+}
+
+.booking-row--top .booking-label {
+    padding-top: 10px;
+}
+
+.booking-row--select {
+    align-items: start;
+}
+
+.booking-row--select .booking-label {
+    padding-top: 12px; /* Ã‘â€ ÃÂµÃÂ½Ã‘â€šÃ‘â‚¬ ÃÂ¿ÃÂ¾ÃÂ´ÃÂ¿ÃÂ¸Ã‘ÂÃÂ¸ ÃÂ¾Ã‘â€šÃÂ½ÃÂ¾Ã‘ÂÃÂ¸Ã‘â€šÃÂµÃÂ»Ã‘Å’ÃÂ½ÃÂ¾ ÃÂ·ÃÂ°ÃÂºÃ‘â‚¬Ã‘â€¹Ã‘â€šÃÂ¾ÃÂ³ÃÂ¾ trigger */
+}
+
+.booking-row--line {
+    align-items: end;
+}
+
+.booking-label {
+    font-family: var(--font-primary);
+    font-size: clamp(15px, 2.4vw, 20px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+
+.booking-dropdown {
+    width: 100%;
+    min-width: 0;
+}
+
+.booking-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--color-highlight);
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--color-primary);
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: left;
+}
+
+.booking-dropdown.is-open .booking-dropdown-trigger {
+    border-radius: 6px 6px 0 0;
+    border-bottom-color: transparent;
+}
+
+.booking-dropdown-value {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.booking-dropdown-value--placeholder {
+    color: #b5b5b5;
+}
+
+.booking-dropdown-chevron {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 8px;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.booking-dropdown.is-open .booking-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+.booking-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 8px;
+    border: 1px solid var(--color-highlight);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.booking-dropdown-option {
+    display: block;
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--color-primary);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.booking-dropdown-option:hover,
+.booking-dropdown-option.is-selected {
+    background: rgba(244, 118, 161, 0.12);
+}
+
+.booking-dropdown-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.booking-input-line {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-highlight);
+    border-radius: 0;
+    background: transparent;
+    padding: 6px 0 4px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--color-primary);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.booking-input-line::placeholder,
+.booking-textarea::placeholder {
+    color: #b5b5b5;
+    opacity: 1;
+}
+
+.booking-clearable {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.booking-clearable .booking-input-line {
+    padding-right: 28px;
+}
+
+.booking-clearable--textarea .booking-textarea {
+    padding-right: 36px;
+}
+
+.booking-field-clear {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity var(--transition);
+    z-index: 1;
+}
+
+.booking-field-clear:hover {
+    opacity: 0.9;
+}
+
+.booking-field-clear img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.booking-clearable--textarea .booking-field-clear {
+    top: 14px;
+    right: 12px;
+    transform: none;
+}
+
+.booking-clearable--budget {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.booking-clearable--budget .booking-field-clear {
+    right: 24px;
+}
+
+.booking-clearable--budget .booking-budget-input {
+    padding-right: 48px;
+}
+
+.booking-input-line:disabled {
+    opacity: 0.4;
+}
+
+.booking-fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: grid;
+    grid-template-columns: minmax(120px, 640px) minmax(0, 1fr);
+    gap: 10px 20px;
+    align-items: start;
+}
+
+.booking-fieldset .booking-label {
+    padding-top: 2px;
+}
+
+.booking-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.booking-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-primary);
+    font-size: clamp(14px, 2.2vw, 18px);
+    font-style: normal;
+    color: var(--color-primary);
+    cursor: pointer;
+    user-select: none;
+    min-width: 0;
+}
+
+.booking-check--full {
+    grid-column: 1 / -1;
+}
+
+.booking-check--full > span:last-child {
+    white-space: nowrap;
+}
+
+.booking-check input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+.booking-check-box {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--color-highlight);
+    border-radius: 2px;
+    box-sizing: border-box;
+    position: relative;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+}
+
+.booking-check-mark {
+    width: 12px;
+    height: 9px;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.85);
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+.booking-check input:checked + .booking-check-box {
+    border-color: var(--color-button-bridal-bouquet);
+}
+
+.booking-check input:checked + .booking-check-box .booking-check-mark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.booking-row--budget {
+    align-items: start;
+}
+
+.booking-budget {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.booking-budget-line {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    width: min(100%, 280px);
+}
+
+.booking-budget-field {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: end;
+}
+
+.booking-budget-input {
+    padding-right: 28px;
+}
+
+.booking-budget-spin {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.booking-budget-spin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 14px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.booking-budget-spin-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.booking-budget-spin-icon {
+    display: block;
+    width: 12px;
+    height: 5px;
+    object-fit: contain;
+}
+
+.booking-budget-spin-icon--up {
+    transform: rotate(180deg);
+}
+
+.booking-budget-prefix {
+    flex: 0 0 auto;
+    font-family: var(--font-primary);
+    font-size: clamp(15px, 2.4vw, 20px);
+    font-style: normal;
+    padding-bottom: 2px;
+}
+
+.booking-textarea {
+    width: 100%;
+    min-height: 88px;
+    border: 1px solid var(--color-highlight);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-primary);
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    outline: none;
+    background: #fff;
+    field-sizing: content;
+}
+
+
+.booking-date-value {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: clamp(12px, 5vw, 20px);
+    font-weight: 500;
+    color: var(--color-button-bridal-bouquet);
+    letter-spacing: 0.02em;
+}
+
+.booking-consent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    font-family: var(--font-primary);
+    font-size: clamp(13px, 2vw, 16px);
+    font-style: normal;
+    color: var(--color-primary);
+}
+
+.booking-check--consent {
+    margin-left: auto;
+}
+
+.booking-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.booking-submit {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 14px 36px;
+    font-size: 15px;
+    width: 100%;
+}
+
 @media (max-width: 1130px) {
     .hero-content {
-        transform: none; /* или translateY(0) */
+        transform: none; /* ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ translateY(0) */
     }
     .hero-title {
         font-size: 60px;
@@ -1086,7 +1601,7 @@ body{
     }
 }
 
-/* ≤800px: при меньшей высоте экрана букет уменьшается, чтобы не лезть к хедеру */
+/* ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¤800px: ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° ÃƒÂÃ‚Â±Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â, Ãƒâ€˜Ã¢â‚¬Â¡Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹ ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â·Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Âº Ãƒâ€˜Ã¢â‚¬Â¦ÃƒÂÃ‚ÂµÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã†â€™ */
 @media (max-width: 800px) {
     .hero-image-reveal {
         --hero-img-w: min(
@@ -1117,7 +1632,7 @@ body{
     .nav-look-date {
         margin-left: auto;
         min-width: 0;
-        /* длинный текст не раздувает страницу */
+        /* ÃƒÂÃ‚Â´ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Â Ãƒâ€˜Ã†â€™ */
     }
 
     .nav-list {
@@ -1144,7 +1659,7 @@ body{
             transform 0.25s ease,
             visibility 0.25s ease;
         z-index: 110;
-        /* закрытое меню не расширяет scrollWidth страницы */
+        /* ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã…Â½ ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‹â€ ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ scrollWidth Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Â Ãƒâ€˜Ã¢â‚¬Â¹ */
         overflow: hidden;
     }
 
@@ -1178,7 +1693,7 @@ body{
         color: var(--color-button-bridal-bouquet);
     }
 
-    /* букет 360°: крупнее фото, макет тот же */
+    /* ÃƒÂÃ‚Â±Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ 360Ãƒâ€šÃ‚Â°: ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾, ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â¶ÃƒÂÃ‚Âµ */
     .bridal-viewer {
         gap: 8px;
     }
@@ -1197,7 +1712,7 @@ body{
     }
 
     .look-date-nav {
-        gap: 18px; /* между строкой месяца и года */
+        gap: 18px; /* ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¶ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â° ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ÃƒÂÃ‚Â° */
     }
 
     .look-date-nav-row {
@@ -1209,7 +1724,7 @@ body{
 
     .look-date-month,
     .look-date-year {
-        flex: 0 1 auto; /* не растягивать — стрелки не у краёв */
+        flex: 0 1 auto; /* ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ Ãƒâ€˜Ã†â€™ ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬ËœÃƒÂÃ‚Â² */
     }
 
     .look-date-footer {
@@ -1221,7 +1736,7 @@ body{
         min-width: 0;
         max-width: 42%;
         padding: 10px 12px;
-        white-space: normal; /* перенос раньше, не ждать 350px */
+        white-space: normal; /* ÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚Â Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Âµ, ÃƒÂÃ‚Â½ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¶ÃƒÂÃ‚Â´ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ 350px */
         line-height: 1.25;
     }
 
@@ -1240,7 +1755,7 @@ body{
         font-size: 14px;
     }
 
-    /* водяной знак: выше края, целиком в 100svh */
+    /* ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Âº: ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚Âµ ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â, Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â² 100svh */
     .hero-decoration-wrap {
         bottom: 4.5svh;
         max-height: 18svh;
@@ -1283,15 +1798,79 @@ body{
     .hero-image-reveal {
       left: auto;
       right: 0;      /* всегда к правому краю — без пробела */
-      width: 170px;  /* как при 659 (659 - 450), не растёт */
+      width: 170px;  /* окно crop: видна только часть букета */
       overflow: hidden;
       transform: translateY(-50%);
     }
+    .booking-close {
+        margin-bottom: 0px;
+    }
   }
+
+@media (max-width: 1023px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        min-height: max(100svh, 640px);
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .hero-content {
+        transform: none;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .hero-description br {
+        display: inline;
+    }
+
+    .hero-content .btn {
+        padding: 12px 28px;
+        font-size: 13px;
+    }
+
+    .hero-decoration-wrap {
+        bottom: 4svh;
+        max-height: 18svh;
+        opacity: 1;
+    }
+
+    .hero-decoration {
+        font-size: min(
+            calc(300px * 100cqw / 1580px),
+            15svh,
+            80px
+        );
+        transform: translateY(0);
+    }
+
+    .hero-image-reveal {
+        left: auto;
+        right: 0;
+        width: 170px;
+        overflow: hidden;
+        top: 50%;
+        transform: translateY(-50%);
+        max-height: none;
+        --hero-img-w: min(
+            var(--hero-img-base-w),
+            calc(var(--hero-img-base-w) * 800px / 1440px)
+        );
+    }
+}
 
 @media (max-width: 500px) {
     .look-date-nav-row {
-        gap: 40px; /* ближе стрелки к месяцу/году, не по краям */
+        gap: 40px; 
     }
 
     .look-date-book {
@@ -1418,141 +1997,6 @@ body{
         font-size: 10px;
     }
 }
-
-/* ——— 2K / большие мониторы ——— 
-@media (min-width: 1920px) {
-    :root {
-        --container-max-width: 1400px;
-        --container-landing-max-width: 2000px;
-        --container-px: 48px;
-    }
-
-    .nav {
-        gap: 72px;
-    }
-
-    .nav-list {
-        gap: 48px;
-    }
-
-    .nav-link,
-    .nav-look-date {
-        font-size: 17px;
-    }
-
-    .hero-content {
-        transform: translateY(-150px);
-    }
-
-    .hero-content-inner {
-        max-width: 1180px;
-    }
-
-    .hero-title {
-        font-size: 88px;
-    }
-
-    .hero-description {
-        font-size: 22px;
-        margin-bottom: 68px;
-    }
-
-    .btn {
-        padding: 17px 38px;
-        font-size: 17px;
-    }
-
-    .hero-image-reveal {
-        --hero-img-base-w: 1300px;
-    }
-
-    .hero-decoration {
-        font-size: 340px;
-    }
-
-    .about-title {
-        font-size: clamp(28px, 2.4vw, 52px);
-    }
-
-    .about-text {
-        font-size: clamp(15px, 1.1vw, 18px);
-        max-width: min(440px, 100%);
-    }
-
-    .about-actions .btn {
-        font-size: clamp(14px, 1.3vw, 28px);
-        padding: clamp(36px, 16%, 120px) clamp(14px, 4%, 28px);
-    }
-
-    .works-title {
-        font-size: clamp(14px, 2.2vw, 24px);
-    }
-
-    .works-item-title {
-        font-size: 42px;
-    }
-
-    .works-num {
-        font-size: 84px;
-    }
-
-    .works-item-text {
-        font-size: 22px;
-    }
-
-    .bridal-title {
-        font-size: clamp(36px, 2.5vw, 52px);
-    }
-
-    .bridal-hint {
-        font-size: 18px;
-    }
-
-    .bridal-stage {
-        width: min(680px, 55vw);
-    }
-
-    .bridal-name {
-        font-size: 22px;
-    }
-
-    .portfolio-title {
-        font-size: clamp(48px, 9vw, 200px);
-    }
-
-    .portfolio-bottom-title {
-        font-size: clamp(48px, 7vw, 140px);
-    }
-
-    .look-date-inner {
-        max-width: 820px;
-    }
-
-    .look-date-title {
-        font-size: clamp(36px, 3.5vw, 60px);
-    }
-
-    .look-date-month {
-        font-size: clamp(28px, 3vw, 48px);
-    }
-
-    .calendar-day {
-        width: min(52px, 100%);
-        font-size: 20px;
-    }
-
-    .calendar-cell {
-        max-width: 52px;
-    }
-
-    .calendar-weekday {
-        font-size: 20px;
-    }
-
-    .footer-link {
-        font-size: clamp(15px, 1.1vw, 18px);
-    }
-}*/
 
 @media (min-width: 2560px) {
     :root {
@@ -1730,6 +2174,172 @@ body{
         white-space: normal;
     }
 
+    /* ——— Booking form 2K ——— */
+    .booking-panel {
+        padding: 80px 0 96px;
+        scroll-margin-top: 120px;
+    }
+
+    .booking-panel-inner {
+        max-width: 1100px;
+    }
+
+    .booking-title-row {
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .booking-close {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 8px;
+    }
+
+    .booking-form {
+        gap: 40px;
+    }
+
+    .booking-heading {
+        font-size: 64px;
+    }
+
+    .booking-heading--contacts {
+        margin-top: 28px;
+        margin-bottom: 28px;
+    }
+
+    .booking-row {
+        grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+        gap: 16px 32px;
+    }
+
+    /* подпись сверху, чекбоксы на всю ширину — сетка не сжимается */
+    .booking-fieldset {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .booking-row--top .booking-label,
+    .booking-row--select .booking-label {
+        padding-top: 16px;
+    }
+
+    .booking-label {
+        font-size: 24px;
+    }
+
+    .booking-dropdown-trigger {
+        min-height: 56px;
+        padding: 14px 20px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+
+    .booking-dropdown-chevron {
+        width: 24px;
+        height: 10px;
+    }
+
+    .booking-dropdown-list {
+        padding: 6px 0 12px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .booking-dropdown-option {
+        padding: 14px 20px;
+        font-size: 20px;
+    }
+
+    .booking-input-line {
+        font-size: 20px;
+        padding: 10px 0 6px;
+    }
+
+    .booking-clearable .booking-input-line {
+        padding-right: 36px;
+    }
+
+    .booking-field-clear {
+        width: 22px;
+        height: 22px;
+    }
+
+    .booking-checks {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        gap: 28px 96px;
+        margin-top: 24px;
+        width: 100%;
+        max-width: 960px;
+    }
+
+    .booking-check {
+        font-size: 22px;
+        gap: 16px;
+    }
+
+    .booking-check-box {
+        width: 24px;
+        height: 24px;
+    }
+
+    .booking-check-mark {
+        width: 16px;
+        height: 12px;
+    }
+
+    .booking-budget {
+        gap: 24px;
+    }
+
+    .booking-budget-line {
+        width: min(100%, 380px);
+        gap: 14px;
+    }
+
+    .booking-budget-prefix {
+        font-size: 24px;
+    }
+
+    .booking-budget-spin-btn {
+        width: 28px;
+        height: 18px;
+    }
+
+    .booking-budget-spin-icon {
+        width: 16px;
+        height: 7px;
+    }
+
+    .booking-textarea {
+        min-height: 120px;
+        padding: 18px 20px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+
+    .booking-clearable--textarea .booking-textarea {
+        padding-right: 48px;
+    }
+
+    .booking-clearable--textarea .booking-field-clear {
+        top: 20px;
+        right: 18px;
+    }
+
+    .booking-date-value {
+        font-size: 28px;
+    }
+
+    .booking-consent {
+        font-size: 20px;
+        gap: 16px;
+    }
+
+    .booking-submit {
+        padding: 20px 48px;
+        font-size: 24px;
+    }
+
     .footer-link {
         font-size: 24px;
     }
@@ -1740,5 +2350,35 @@ body{
 
     .footer-brand-img {
         max-height: min(34vw, 380px);
+    }
+}
+
+@media (max-width: 640px) {
+    .booking-row,
+    .booking-fieldset {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .booking-heading--contacts {
+        align-self: stretch;
+        text-align: left;
+    }
+
+    .booking-consent {
+        flex-wrap: wrap;
+    }
+
+    .booking-check--consent {
+        margin-left: 0;
+    }
+
+    .booking-actions {
+        justify-content: stretch;
+    }
+
+    .booking-submit {
+        width: 100%;
+        text-align: center;
     }
 }

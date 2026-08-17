@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import BookingForm from './BookingForm'
 
 const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
@@ -76,7 +77,14 @@ function LookDate() {
   const [year, setYear] = useState(minYear)
   const [month, setMonth] = useState(minMonth)
   const [selectedDay, setSelectedDay] = useState(null)
+  const [formOpen, setFormOpen] = useState(false)
+  const [formDate, setFormDate] = useState(null)
   const rootRef = useRef(null)
+
+  const selectedDate = useMemo(() => {
+    if (selectedDay == null) return null
+    return startOfDay(new Date(year, month, selectedDay))
+  }, [year, month, selectedDay])
 
   const available = useMemo(() => {
     return new Set(buildAvailableDays(year, month, today, maxDate))
@@ -100,6 +108,7 @@ function LookDate() {
 
   useEffect(() => {
     const onPointerDown = (event) => {
+      if (formOpen) return
       if (!rootRef.current?.contains(event.target)) {
         setSelectedDay(null)
       }
@@ -107,7 +116,23 @@ function LookDate() {
 
     document.addEventListener('pointerdown', onPointerDown)
     return () => document.removeEventListener('pointerdown', onPointerDown)
-  }, [])
+  }, [formOpen])
+
+  const openForm = () => {
+    if (!selectedDate) return
+    setFormDate(selectedDate)
+    setFormOpen(true)
+  }
+
+  const closeForm = () => {
+    setFormOpen(false)
+  }
+
+  useEffect(() => {
+    if (formOpen && selectedDate) {
+      setFormDate(selectedDate)
+    }
+  }, [formOpen, selectedDate])
 
   const goToMonth = (nextYear, nextMonth) => {
     if (isBeforeMonth(nextYear, nextMonth, minYear, minMonth)) return
@@ -250,11 +275,27 @@ function LookDate() {
           <p className="look-date-legend">
             *Свободные даты обозначаются зеленым цветом
           </p>
-          <a href="#look-date" className="btn btn-booking look-date-book">
+          <button
+            type="button"
+            className="btn btn-booking look-date-book"
+            onClick={openForm}
+            disabled={!selectedDate}
+            title={
+              selectedDate
+                ? undefined
+                : 'Сначала выберите свободную дату в календаре'
+            }
+          >
             Забронировать дату
-          </a>
+          </button>
         </div>
       </div>
+
+      <BookingForm
+        open={formOpen}
+        onClose={closeForm}
+        date={formDate}
+      />
     </section>
   )
 }

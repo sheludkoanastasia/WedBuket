@@ -1,26 +1,20 @@
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import About from './components/About'
-import Portfolio from './components/Portfolio'
-import LookDate from './components/LookDate'
-import BridalBouquet from './components/BridalBouquet'
-import Works from './components/Works'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import SitemapPage from './pages/SitemapPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Works />
-        <BridalBouquet />
-        <Portfolio />
-        <LookDate />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/sitemap" element={<SitemapPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

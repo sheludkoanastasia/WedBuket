@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -47,35 +48,47 @@ function Header() {
             className={`nav-list${open ? ' is-open' : ''}`}
           >
             <li className="nav-item">
-              <a href="#about" className="nav-link" onClick={closeMenu}>
+              <Link
+                to="/#about"
+                className="nav-link"
+                onClick={closeMenu}
+              >
                 О нас
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#works" className="nav-link" onClick={closeMenu}>
+              <Link
+                to="/#works"
+                className="nav-link"
+                onClick={closeMenu}
+              >
                 Как мы работаем
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
-                href="#bridal-bouquet"
+              <Link
+                to="/#bridal-bouquet"
                 className="nav-link"
                 onClick={closeMenu}
               >
                 Букет невесты 360°
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#portfolio" className="nav-link" onClick={closeMenu}>
+              <Link
+                to="/#portfolio"
+                className="nav-link"
+                onClick={closeMenu}
+              >
                 Фото с событий
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
-        <a href="#look-date" className="nav-look-date">
-        Просмотреть свободные&nbsp;даты
-        </a>
+        <Link to="/#look-date" className="nav-look-date">
+          Просмотреть свободные&nbsp;даты
+        </Link>
       </nav>
     </header>
   )

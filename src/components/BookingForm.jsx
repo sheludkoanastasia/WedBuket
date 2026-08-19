@@ -1,4 +1,10 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {
+  createBooking,
+  fetchBookingTime,
+  toIsoDate,
+} from '../api/yclients'
 
 const EVENT_TYPES = [
   { id: 'wedding', name: 'Свадьба' },
@@ -28,7 +34,7 @@ function formatDate(date) {
   return `${dd}.${mm}.${yyyy}`
 }
 
-/** +7(918)-126-76-33 — ровно 11 цифр с ведущей 7 */
+
 function formatRuPhoneFromDigits(digits) {
   let d = digits.replace(/\D/g, '')
   if (d.startsWith('8')) d = `7${d.slice(1)}`
@@ -227,7 +233,40 @@ function BookingCheck({
   )
 }
 
-function BookingForm({ open, onClose, date }) {
+/** Поля записи YCLIENTS (ключи = code доп. полей) */
+function buildCustomFields({
+  eventType,
+  venue,
+  extras,
+  bouquet,
+  budget,
+  budgetDiscuss,
+  refs,
+}) {
+  const eventName =
+    EVENT_TYPES.find((o) => o.id === eventType)?.name || eventType || ''
+  const bouquetName =
+    BOUQUETS.find((o) => o.id === bouquet)?.name || bouquet || ''
+  const extrasList = EXTRA_OPTIONS.filter((o) => extras[o.id])
+    .map((o) => o.label)
+    .join(', ')
+  const budgetText = budgetDiscuss
+    ? 'обсудим'
+    : budget
+      ? `до ${budget}`
+      : ''
+
+  return {
+    event_type: eventName,
+    venue: venue.trim(),
+    extras: extrasList,
+    bouquet: bouquetName,
+    budget: budgetText,
+    refs: refs.trim(),
+  }
+}
+
+function BookingForm({ open, onClose, onBooked, date }) {
   const titleId = useId()
   const sectionRef = useRef(null)
   const refsAreaRef = useRef(null)
@@ -241,11 +280,29 @@ function BookingForm({ open, onClose, date }) {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('+7')
   const [consent, setConsent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [submitOk, setSubmitOk] = useState(false)
 
   useEffect(() => {
     if (!open || !sectionRef.current) return
     sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [open])
+
+  useEffect(() => {
+    if (!open) return
+    setSubmitError('')
+    setSubmitOk(false)
+    setSubmitting(false)
+  }, [open, date])
+
+  useEffect(() => {
+    if (!submitOk) return undefined
+    const timer = window.setTimeout(() => {
+      onClose()
+    }, 1800)
+    return () => window.clearTimeout(timer)
+  }, [submitOk, onClose])
 
   useEffect(() => {
     const el = refsAreaRef.current
@@ -298,11 +355,50 @@ function BookingForm({ open, onClose, date }) {
     setBudget(String(next))
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
-    if (!consent) return
+    if (!consent || submitting) return
     if (phoneDigits(phone).length !== 11) return
-    onClose()
+    if (!date) {
+      setSubmitError('Сначала выберите дату в календаре')
+      return
+    }
+
+    setSubmitting(true)
+    setSubmitError('')
+    setSubmitOk(false)
+
+    try {
+      const dateIso = toIsoDate(date)
+      const slot = await fetchBookingTime(dateIso)
+      if (!slot?.datetime) {
+        throw new Error('На эту дату больше нет свободного слота')
+      }
+
+      await createBooking({
+        name: name.trim(),
+        phone: phoneDigits(phone),
+        email: 'client@wedbuket.ru',
+        datetime: slot.datetime,
+        comment: 'Заявка с сайта WedBuket',
+        custom_fields: buildCustomFields({
+          eventType,
+          venue,
+          extras,
+          bouquet,
+          budget,
+          budgetDiscuss,
+          refs,
+        }),
+      })
+
+      setSubmitOk(true)
+      onBooked?.(dateIso)
+    } catch (err) {
+      setSubmitError(err.message || 'Не удалось отправить заявку')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -501,7 +597,12 @@ function BookingForm({ open, onClose, date }) {
           </div>
 
           <div className="booking-consent">
-            <span>Даю согласие на обработку персональных данных</span>
+            <span>
+              Даю согласие на обработку{' '}
+              <Link to="/privacy" className="booking-consent-link">
+                персональных данных
+              </Link>
+            </span>
             <BookingCheck
               className="booking-check--consent"
               checked={consent}
@@ -510,9 +611,24 @@ function BookingForm({ open, onClose, date }) {
             />
           </div>
 
+          {submitError ? (
+            <p className="booking-status booking-status--error" role="alert">
+              {submitError}
+            </p>
+          ) : null}
+          {submitOk ? (
+            <p className="booking-status booking-status--ok" role="status">
+              Заявка отправлена. Дата забронирована.
+            </p>
+          ) : null}
+
           <div className="booking-actions">
-            <button type="submit" className="btn btn-booking booking-submit">
-              Отправить заявку
+            <button
+              type="submit"
+              className="btn btn-booking booking-submit"
+              disabled={submitting}
+            >
+              {submitting ? 'Отправка…' : 'Отправить заявку'}
             </button>
           </div>
         </form>

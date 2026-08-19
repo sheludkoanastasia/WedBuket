@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { fetchBookingDates, toIsoDate } from '../api/yclients'
 import BookingForm from './BookingForm'
 
 const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
@@ -40,27 +41,6 @@ function isAfterMonth(year, month, maxYear, maxMonth) {
   return year > maxYear || (year === maxYear && month > maxMonth)
 }
 
-/** Демо-правило свободных дат в пределах допустимого диапазона */
-function buildAvailableDays(year, month, today, maxDate) {
-  const daysInMonth = getDaysInMonth(year, month)
-  const result = []
-
-  for (let day = 1; day <= daysInMonth; day += 1) {
-    const date = startOfDay(new Date(year, month, day))
-    if (date < today || date > maxDate) continue
-
-    const weekday = date.getDay()
-    const isWeekend = weekday === 0 || weekday === 6
-    const isSlotDay = day % 5 === 0 || day % 7 === 3
-
-    if (isWeekend || isSlotDay) {
-      result.push(day)
-    }
-  }
-
-  return result
-}
-
 function LookDate() {
   const today = useMemo(() => startOfDay(new Date()), [])
   const maxDate = useMemo(() => {
@@ -79,16 +59,54 @@ function LookDate() {
   const [selectedDay, setSelectedDay] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const [formDate, setFormDate] = useState(null)
+  const [bookingDates, setBookingDates] = useState(() => new Set())
+  const [datesLoading, setDatesLoading] = useState(true)
+  const [datesError, setDatesError] = useState('')
   const rootRef = useRef(null)
+  /** Даты, только что забронированные на сайте — YCLIENTS book_dates обновляется с задержкой */
+  const locallyBookedRef = useRef(new Set())
+
+  const applyBookingList = useCallback((list) => {
+    const apiSet = new Set(list)
+    const next = new Set(list)
+    locallyBookedRef.current.forEach((iso) => {
+      next.delete(iso)
+      // Когда API уже не отдаёт день — локальная пометка больше не нужна
+      if (!apiSet.has(iso)) locallyBookedRef.current.delete(iso)
+    })
+    setBookingDates(next)
+  }, [])
+
+  const loadDates = useCallback(
+    async ({ silent = false } = {}) => {
+      if (!silent) {
+        setDatesLoading(true)
+        setDatesError('')
+      }
+      try {
+        const list = await fetchBookingDates()
+        applyBookingList(list)
+        if (silent) setDatesError('')
+      } catch (err) {
+        if (!silent) {
+          setBookingDates(new Set())
+          setDatesError(err.message || 'Не удалось загрузить свободные даты')
+        }
+      } finally {
+        if (!silent) setDatesLoading(false)
+      }
+    },
+    [applyBookingList]
+  )
+
+  useEffect(() => {
+    loadDates()
+  }, [loadDates])
 
   const selectedDate = useMemo(() => {
     if (selectedDay == null) return null
     return startOfDay(new Date(year, month, selectedDay))
   }, [year, month, selectedDay])
-
-  const available = useMemo(() => {
-    return new Set(buildAvailableDays(year, month, today, maxDate))
-  }, [year, month, today, maxDate])
 
   const cells = useMemo(() => {
     const daysCount = getDaysInMonth(year, month)
@@ -126,6 +144,23 @@ function LookDate() {
 
   const closeForm = () => {
     setFormOpen(false)
+  }
+
+  const onBooked = (bookedIso) => {
+    if (bookedIso) {
+      locallyBookedRef.current.add(bookedIso)
+      setBookingDates((prev) => {
+        const next = new Set(prev)
+        next.delete(bookedIso)
+        return next
+      })
+    }
+    setSelectedDay(null)
+
+    // Фоновая сверка с API; локально занятые дни из ответа вычитаются
+    window.setTimeout(() => {
+      loadDates({ silent: true })
+    }, 1500)
   }
 
   useEffect(() => {
@@ -181,6 +216,22 @@ function LookDate() {
     <section className="look-date" id="look-date">
       <div className="look-date-inner container" ref={rootRef}>
         <h2 className="look-date-title">Свободные даты</h2>
+
+        {datesError ? (
+          <p className="look-date-status look-date-status--error" role="alert">
+            {datesError}
+            <button
+              type="button"
+              className="look-date-retry"
+              onClick={() => loadDates()}
+            >
+              Повторить
+            </button>
+          </p>
+        ) : null}
+        {datesLoading ? (
+          <p className="look-date-status">Загрузка свободных дат…</p>
+        ) : null}
 
         <div className="look-date-nav">
           <div className="look-date-nav-row">
@@ -245,7 +296,9 @@ function LookDate() {
 
               const date = startOfDay(new Date(year, month, day))
               const isPast = date < today
-              const isAvailable = !isPast && available.has(day)
+              const iso = toIsoDate(date)
+              const isAvailable =
+                !isPast && !datesLoading && bookingDates.has(iso)
               const isSelected = selectedDay === day
 
               return (
@@ -279,7 +332,7 @@ function LookDate() {
             type="button"
             className="btn btn-booking look-date-book"
             onClick={openForm}
-            disabled={!selectedDate}
+            disabled={!selectedDate || datesLoading}
             title={
               selectedDate
                 ? undefined
@@ -294,6 +347,7 @@ function LookDate() {
       <BookingForm
         open={formOpen}
         onClose={closeForm}
+        onBooked={onBooked}
         date={formDate}
       />
     </section>

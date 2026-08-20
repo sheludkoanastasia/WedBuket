@@ -2,10 +2,32 @@ import { useEffect, useRef, useState } from 'react'
 
 const REVEAL_RADIUS = 160
 
-function Hero() {
+const HERO_IMAGES = [
+  '/images/wedding-bouquet-garden-glass.webp',
+  '/images/wedding-bouquet-garden-under-glass.webp',
+]
+
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.decoding = 'async'
+    img.onload = () => {
+      if (typeof img.decode === 'function') {
+        img.decode().then(resolve).catch(resolve)
+      } else {
+        resolve()
+      }
+    }
+    img.onerror = () => resolve()
+    img.src = src
+  })
+}
+
+function Hero({ onReady }) {
   const stageRef = useRef(null)
   const rafRef = useRef(0)
   const pointRef = useRef({ x: 0, y: 0 })
+  const readySent = useRef(false)
   const [active, setActive] = useState(false)
   const [point, setPoint] = useState({ x: 0, y: 0 })
 
@@ -14,6 +36,30 @@ function Hero() {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    const timeoutId = window.setTimeout(() => {
+      if (cancelled || readySent.current) return
+      readySent.current = true
+      onReady?.()
+    }, 6000)
+
+    Promise.all([
+      ...HERO_IMAGES.map(loadImage),
+      document.fonts?.ready ?? Promise.resolve(),
+    ]).then(() => {
+      if (cancelled || readySent.current) return
+      readySent.current = true
+      window.clearTimeout(timeoutId)
+      onReady?.()
+    })
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(timeoutId)
+    }
+  }, [onReady])
 
   const flushPoint = () => {
     rafRef.current = 0
@@ -60,14 +106,18 @@ function Hero() {
       >
         <img
           className="hero-image hero-image--base"
-          src="/images/wedding-bouquet-garden-glass.png"
+          src={HERO_IMAGES[0]}
           alt=""
+          decoding="async"
+          fetchPriority="high"
           draggable={false}
         />
         <img
           className="hero-image hero-image--lens"
-          src="/images/wedding-bouquet-garden-under-glass.jpg"
+          src={HERO_IMAGES[1]}
           alt=""
+          decoding="async"
+          fetchPriority="high"
           draggable={false}
         />
       </div>
@@ -81,7 +131,7 @@ function Hero() {
       <div className="hero-content container container--landing">
         <div className="hero-content-inner">
           <h1 className="hero-title">
-          <span>Собери флористику&nbsp;мечты</span>
+            <span>Собери флористику&nbsp;мечты</span>
             <span>на свою свадьбу</span>
           </h1>
           <p className="hero-description">

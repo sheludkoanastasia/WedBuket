@@ -1,14 +1,18 @@
+import { useReveal } from '../hooks/useReveal'
+
 function Works() {
+  const revealRef = useReveal()
+
   return (
-    <section className="works" id="works">
+    <section className="works reveal" id="works" ref={revealRef}>
       <div className="works-inner container">
-        <h2 className="works-title">
+        <h2 className="works-title reveal-child">
           От первой даты до монтажа в день свадьбы —{' '}
           <span className="works-title-accent">как работаем</span>.
         </h2>
 
         <ol className="works-list">
-          <li className="works-item">
+          <li className="works-item reveal-child">
             <h3 className="works-item-title">
               <span className="works-num">01</span> Смотрим дату
             </h3>
@@ -17,7 +21,7 @@ function Works() {
             </p>
           </li>
 
-          <li className="works-item works-item--right">
+          <li className="works-item works-item--right reveal-child">
             <h3 className="works-item-title">
               <span className="works-num">02</span> Собираем стиль
             </h3>
@@ -26,7 +30,7 @@ function Works() {
             </p>
           </li>
 
-          <li className="works-item">
+          <li className="works-item reveal-child">
             <h3 className="works-item-title">
               <span className="works-num">03</span> Смета и фиксация
             </h3>
@@ -35,7 +39,7 @@ function Works() {
             </p>
           </li>
 
-          <li className="works-item works-item--right">
+          <li className="works-item works-item--right reveal-child">
             <h3 className="works-item-title">
               <span className="works-num">04</span> День свадьбы
             </h3>

@@ -49,12 +49,15 @@ function Footer() {
               +7 (900) 000-00-00
             </a>
             <a
-              href="mailto:hello@wedbuket.ru"
+              href="mailto:sheludkoanastasiakrasnodar@gmail.com"
               className="footer-link footer-link--mail"
             >
-              hello@wedbuket.ru
+              sheludkoanastasiakrasnodar@gmail.com
             </a>
             <p className="footer-copy">© {new Date().getFullYear()} WedBuket</p>
+            <p className="footer-portfolio">
+              Портфолио-проект. Не является публичной офертой.
+            </p>
           </div>
         </div>
 

@@ -18,7 +18,10 @@ const LEGAL = [
 
 const CONTACTS = [
   { href: 'tel:+79000000000', label: '+7 (900) 000-00-00' },
-  { href: 'mailto:hello@wedbuket.ru', label: 'hello@wedbuket.ru' },
+  {
+    href: 'mailto:sheludkoanastasiakrasnodar@gmail.com',
+    label: 'sheludkoanastasiakrasnodar@gmail.com',
+  },
 ]
 
 function SitemapPage() {
@@ -34,7 +37,7 @@ function SitemapPage() {
         </p>
         <h1 className="legal-title">Карта сайта</h1>
         <p className="legal-lead">
-          Разделы WedBuket и правовая информация.
+          Разделы портфолио-проекта WedBuket и правовая информация.
         </p>
 
         <section className="sitemap-block" aria-labelledby="sitemap-sections">

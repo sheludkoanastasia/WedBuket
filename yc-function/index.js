@@ -2,19 +2,37 @@
 
 const YC_BASE = 'https://api.yclients.com/api/v1'
 
-function corsHeaders() {
+const ALLOWED_ORIGINS = [
+  'https://wedbuket.website.yandexcloud.net',
+  'http://wedbuket.website.yandexcloud.net',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]
+
+function requestOrigin(event) {
+  const headers = event?.headers || {}
+  return headers.origin || headers.Origin || ''
+}
+
+function corsHeaders(event) {
+  const origin = requestOrigin(event)
+  const allowOrigin = ALLOWED_ORIGINS.includes(origin)
+    ? origin
+    : ALLOWED_ORIGINS[0]
+
   return {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowOrigin,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
   }
 }
 
-function json(statusCode, data) {
+function json(statusCode, data, event) {
   return {
     statusCode,
-    headers: corsHeaders(),
+    headers: corsHeaders(event),
     body: JSON.stringify(data),
   }
 }
@@ -87,7 +105,7 @@ module.exports.handler = async function (event) {
   const { path, qs, method } = getPathAndQuery(event)
 
   if (method === 'OPTIONS') {
-    return { statusCode: 204, headers: corsHeaders(), body: '' }
+    return { statusCode: 204, headers: corsHeaders(event), body: '' }
   }
 
   const companyId = process.env.YCLIENTS_COMPANY_ID
@@ -100,16 +118,16 @@ module.exports.handler = async function (event) {
       const data = await ycFetch(
         `/book_dates/${companyId}?service_ids[]=${serviceId}&staff_id=${staffId}`
       )
-      return json(200, data)
+      return json(200, data, event)
     }
 
     if (method === 'GET' && (action === 'times' || path.endsWith('/times'))) {
       const date = qs.date
-      if (!date) return json(400, { error: 'date required (YYYY-MM-DD)' })
+      if (!date) return json(400, { error: 'date required (YYYY-MM-DD)' }, event)
       const data = await ycFetch(
         `/book_times/${companyId}/${staffId}/${date}?service_ids[]=${serviceId}`
       )
-      return json(200, data)
+      return json(200, data, event)
     }
 
     if (
@@ -144,28 +162,36 @@ module.exports.handler = async function (event) {
       }
 
       if (!payload.appointments[0].datetime) {
-        return json(400, { error: 'datetime required' })
+        return json(400, { error: 'datetime required' }, event)
       }
       if (!phone) {
-        return json(400, { error: 'phone required' })
+        return json(400, { error: 'phone required' }, event)
       }
 
       const data = await ycFetch(`/book_record/${companyId}`, {
         method: 'POST',
         body: JSON.stringify(payload),
       })
-      return json(200, data)
+      return json(200, data, event)
     }
 
-    return json(200, {
-      ok: true,
-      message: 'yclients-api works',
-      hint: 'Use ?action=dates | ?action=times&date=YYYY-MM-DD | POST ?action=book',
-    })
+    return json(
+      200,
+      {
+        ok: true,
+        message: 'yclients-api works',
+        hint: 'Use ?action=dates | ?action=times&date=YYYY-MM-DD | POST ?action=book',
+      },
+      event
+    )
   } catch (e) {
-    return json(e.status || 500, {
-      error: e.message,
-      details: e.data || null,
-    })
+    return json(
+      e.status || 500,
+      {
+        error: e.message,
+        details: e.data || null,
+      },
+      event
+    )
   }
 }

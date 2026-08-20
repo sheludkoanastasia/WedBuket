@@ -1,10 +1,11 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   createBooking,
   fetchBookingTime,
   toIsoDate,
 } from '../api/yclients'
+import { getGsap, prefersReducedMotion } from '../lib/gsap'
 
 const EVENT_TYPES = [
   { id: 'wedding', name: 'Свадьба' },
@@ -80,6 +81,8 @@ function ExpandSelect({
 }) {
   const [open, setOpen] = useState(false)
   const rootRef = useRef(null)
+  const panelRef = useRef(null)
+  const primedRef = useRef(false)
   const selected = options.find((o) => o.id === value)
 
   useEffect(() => {
@@ -89,6 +92,56 @@ function ExpandSelect({
     }
     document.addEventListener('pointerdown', onDoc)
     return () => document.removeEventListener('pointerdown', onDoc)
+  }, [open])
+
+  useLayoutEffect(() => {
+    const panel = panelRef.current
+    if (!panel) return undefined
+
+    const { gsap } = getGsap()
+    gsap.killTweensOf(panel)
+
+    if (!primedRef.current) {
+      primedRef.current = true
+      gsap.set(panel, {
+        height: open ? 'auto' : 0,
+        opacity: open ? 1 : 0,
+        overflow: 'hidden',
+      })
+      return undefined
+    }
+
+    if (prefersReducedMotion()) {
+      gsap.set(panel, {
+        height: open ? 'auto' : 0,
+        opacity: open ? 1 : 0,
+        overflow: 'hidden',
+      })
+      return undefined
+    }
+
+    if (open) {
+      gsap.fromTo(
+        panel,
+        { height: 0, opacity: 0, overflow: 'hidden' },
+        {
+          height: 'auto',
+          opacity: 1,
+          duration: 0.48,
+          ease: 'power3.out',
+        }
+      )
+    } else {
+      gsap.to(panel, {
+        height: 0,
+        opacity: 0,
+        duration: 0.36,
+        ease: 'power2.inOut',
+        overflow: 'hidden',
+      })
+    }
+
+    return () => gsap.killTweensOf(panel)
   }, [open])
 
   return (
@@ -118,7 +171,11 @@ function ExpandSelect({
         />
       </button>
 
-      {open ? (
+      <div
+        className="booking-dropdown-panel"
+        ref={panelRef}
+        aria-hidden={!open}
+      >
         <ul className="booking-dropdown-list" role="listbox">
           {options.map((opt) => (
             <li key={opt.id} role="none">
@@ -126,6 +183,7 @@ function ExpandSelect({
                 type="button"
                 role="option"
                 aria-selected={value === opt.id}
+                tabIndex={open ? 0 : -1}
                 className={`booking-dropdown-option${
                   value === opt.id ? ' is-selected' : ''
                 }`}
@@ -139,7 +197,7 @@ function ExpandSelect({
             </li>
           ))}
         </ul>
-      ) : null}
+      </div>
 
       <input
         type="text"
@@ -269,6 +327,7 @@ function buildCustomFields({
 function BookingForm({ open, onClose, onBooked, date }) {
   const titleId = useId()
   const sectionRef = useRef(null)
+  const clipRef = useRef(null)
   const refsAreaRef = useRef(null)
   const [eventType, setEventType] = useState('')
   const [venue, setVenue] = useState('')
@@ -283,11 +342,67 @@ function BookingForm({ open, onClose, onBooked, date }) {
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [submitOk, setSubmitOk] = useState(false)
+  const [mounted, setMounted] = useState(open)
+  const openRef = useRef(open)
+  openRef.current = open
 
   useEffect(() => {
-    if (!open || !sectionRef.current) return
-    sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (open) setMounted(true)
   }, [open])
+
+  useLayoutEffect(() => {
+    if (!mounted) return undefined
+    const clip = clipRef.current
+    if (!clip) return undefined
+
+    const { gsap } = getGsap()
+    gsap.killTweensOf(clip)
+
+    if (prefersReducedMotion()) {
+      gsap.set(clip, {
+        height: open ? 'auto' : 0,
+        opacity: open ? 1 : 0,
+        overflow: 'hidden',
+      })
+      if (!open) setMounted(false)
+      else {
+        sectionRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' })
+      }
+      return undefined
+    }
+
+    if (open) {
+      gsap.fromTo(
+        clip,
+        { height: 0, opacity: 0, overflow: 'hidden' },
+        {
+          height: 'auto',
+          opacity: 1,
+          duration: 0.7,
+          ease: 'power3.out',
+          onStart: () => {
+            sectionRef.current?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          },
+        }
+      )
+    } else {
+      gsap.to(clip, {
+        height: 0,
+        opacity: 0,
+        duration: 0.48,
+        ease: 'power2.inOut',
+        overflow: 'hidden',
+        onComplete: () => {
+          if (!openRef.current) setMounted(false)
+        },
+      })
+    }
+
+    return () => gsap.killTweensOf(clip)
+  }, [open, mounted])
 
   useEffect(() => {
     if (!open) return
@@ -306,12 +421,12 @@ function BookingForm({ open, onClose, onBooked, date }) {
 
   useEffect(() => {
     const el = refsAreaRef.current
-    if (!el) return
+    if (!el || !mounted) return
     el.style.height = 'auto'
     el.style.height = `${el.scrollHeight}px`
-  }, [refs, open])
+  }, [refs, mounted])
 
-  if (!open) return null
+  if (!mounted) return null
 
   const toggleExtra = (id) => {
     setExtras((prev) => {
@@ -407,9 +522,11 @@ function BookingForm({ open, onClose, onBooked, date }) {
       className="booking-panel"
       id="booking-form"
       aria-labelledby={titleId}
+      aria-hidden={!open}
     >
-      <div className="booking-panel-inner container">
-        <form className="booking-form" onSubmit={onSubmit}>
+      <div className="booking-panel-clip" ref={clipRef}>
+        <div className="booking-panel-inner container">
+          <form className="booking-form" onSubmit={onSubmit}>
           <div className="booking-title-row">
             <h2 id={titleId} className="booking-heading">
               О событии
@@ -632,6 +749,7 @@ function BookingForm({ open, onClose, onBooked, date }) {
             </button>
           </div>
         </form>
+        </div>
       </div>
     </section>
   )

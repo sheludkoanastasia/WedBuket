@@ -1,9 +1,14 @@
+import Picture from './Picture'
+import { useReveal } from '../hooks/useReveal'
+
 function About() {
+  const revealRef = useReveal()
+
   return (
-    <section className="about" id="about">
+    <section className="about reveal" id="about" ref={revealRef}>
       <div className="about-inner container">
         <div className="about-grid">
-          <div className="about-left">
+          <div className="about-left reveal-child">
             <div className="about-intro">
               <h2 className="about-title">Что для нас важно</h2>
               <p className="about-text">
@@ -20,17 +25,34 @@ function About() {
               </p>
             </div>
             <div className="about-image-left-grid">
-              <img className="about-img" src="/images/about1.png" alt="" />
-              <img className="about-img" src="/images/about2.png" alt="" />
+              <Picture
+                className="about-picture"
+                imgClassName="about-img"
+                webp="/images/about1.webp"
+                fallback="/images/about1.png"
+                alt=""
+                loading="lazy"
+              />
+              <Picture
+                className="about-picture"
+                imgClassName="about-img"
+                webp="/images/about2.webp"
+                fallback="/images/about2.png"
+                alt=""
+                loading="lazy"
+              />
             </div>
           </div>
 
-          <div className="about-right">
+          <div className="about-right reveal-child">
             <h2 className="about-title about-title--line">Свадебные профи</h2>
-            <img
-              className="about-img about-img--tall"
-              src="/images/about3.png"
+            <Picture
+              className="about-picture"
+              imgClassName="about-img about-img--tall"
+              webp="/images/about3.webp"
+              fallback="/images/about3.png"
               alt=""
+              loading="lazy"
             />
             <div className="about-actions">
               <a href="#look-date" className="btn btn-look-date">

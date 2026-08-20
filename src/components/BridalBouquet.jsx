@@ -5,23 +5,33 @@ const bouquets = [
     id: 'calla',
     name: 'Букет из калл',
     frames: Array.from({ length: 12 }, (_, i) =>
-      `/images/360%20flowers/calla/bouquet-turn-${String(i).padStart(2, '0')}.png`,
+      `/images/360%20flowers/calla/bouquet-turn-${String(i).padStart(2, '0')}.webp`,
     ),
   },
   {
     id: 'sadoviy',
     name: 'Садовый белый',
     frames: Array.from({ length: 8 }, (_, i) =>
-      `/images/360%20flowers/sadoviy%20white/g01-${String(i).padStart(2, '0')}.png`,
+      `/images/360%20flowers/sadoviy%20white/g01-${String(i).padStart(2, '0')}.webp`,
     ),
   },
 ]
 
 const DRAG_STEP = 8
 
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(src)
+    img.onerror = reject
+    img.src = src
+  })
+}
+
 function BridalBouquet() {
   const [bouquetIndex, setBouquetIndex] = useState(0)
   const [frame, setFrame] = useState(0)
+  const [ready, setReady] = useState(false)
   const dragging = useRef(false)
   const lastX = useRef(0)
 
@@ -29,20 +39,32 @@ function BridalBouquet() {
   const framesCount = bouquet.frames.length
 
   useEffect(() => {
-    bouquet.frames.forEach((src) => {
-      const img = new Image()
-      img.src = src
-    })
+    let cancelled = false
+    setReady(false)
+    setFrame(0)
+
+    Promise.all(bouquet.frames.map(loadImage))
+      .then(() => {
+        if (!cancelled) setReady(true)
+      })
+      .catch(() => {
+        if (!cancelled) setReady(true)
+      })
+
+    return () => {
+      cancelled = true
+    }
   }, [bouquet])
 
   const onPointerDown = (e) => {
+    if (!ready) return
     dragging.current = true
     lastX.current = e.clientX
     e.currentTarget.setPointerCapture(e.pointerId)
   }
 
   const onPointerMove = (e) => {
-    if (!dragging.current) return
+    if (!dragging.current || !ready) return
     const dx = e.clientX - lastX.current
     if (Math.abs(dx) >= DRAG_STEP) {
       const steps = Math.trunc(dx / DRAG_STEP)
@@ -57,12 +79,10 @@ function BridalBouquet() {
 
   const prevBouquet = () => {
     setBouquetIndex((i) => (i - 1 + bouquets.length) % bouquets.length)
-    setFrame(0)
   }
 
   const nextBouquet = () => {
     setBouquetIndex((i) => (i + 1) % bouquets.length)
-    setFrame(0)
   }
 
   return (
@@ -78,21 +98,26 @@ function BridalBouquet() {
             onClick={prevBouquet}
             aria-label="Предыдущий букет"
           >
-            <img src="/images/previous_arrow.svg" alt="Предыдущий букет" />
+            <img src="/images/previous_arrow.svg" alt="" />
           </button>
 
           <div
-            className="bridal-stage"
+            className={`bridal-stage${ready ? '' : ' is-loading'}`}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
           >
-            <img
-              src={bouquet.frames[frame]}
-              alt={bouquet.name}
-              draggable={false}
-            />
+            {bouquet.frames.map((src, i) => (
+              <img
+                key={src}
+                className={`bridal-stage-frame${i === frame ? ' is-active' : ''}`}
+                src={src}
+                alt={i === frame ? bouquet.name : ''}
+                draggable={false}
+                decoding="sync"
+              />
+            ))}
           </div>
 
           <button
@@ -101,7 +126,7 @@ function BridalBouquet() {
             onClick={nextBouquet}
             aria-label="Следующий букет"
           >
-            <img src="/images/next_arrow.svg" alt="Следующий букет" />
+            <img src="/images/next_arrow.svg" alt="" />
           </button>
         </div>
 

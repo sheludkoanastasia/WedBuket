@@ -1,6 +1,8 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-y: scroll; /* скроллбар всегда — без скачка ширины после intro */
+    scrollbar-gutter: stable;
   }
 
 body{
@@ -9,6 +11,15 @@ body{
     background-color: var(--color-background);
     overflow-x: hidden;
     max-width: 100%;
+}
+
+html.site-booting #root {
+    opacity: 0;
+    pointer-events: none;
+}
+
+html.site-scroll-lock {
+    overscroll-behavior: none;
 }
 
 .header{
@@ -105,7 +116,7 @@ body{
     font-size: 16px;
     font-weight: 400;
     color: var(--color-primary);
-    transition: opacity var(--transition), color var(--transition);
+    transition: opacity 0.28s ease, color 0.28s ease;
     text-decoration: none;
   }
   
@@ -119,9 +130,13 @@ body{
     letter-spacing: 0.04em;
     color: var(--color-highlight);
     text-decoration: none;
-    transition: var(--transition);
+    transition: opacity 0.28s ease, color 0.28s ease;
     position: relative;
     text-align: right;
+}
+
+.nav-look-date:hover {
+    opacity: 0.72;
 }
 
 .btn{
@@ -130,11 +145,16 @@ body{
     background-color: var(--color-button-bridal-bouquet);
     color: var(--color-button-bridal-bouquet-text);
     text-decoration: none;
-    transition: var(--transition);
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.04em;
-    transition: background-color var(--transition), color var(--transition);
+    border: none;
+    cursor: pointer;
+    transition:
+        background-color 0.28s ease,
+        color 0.28s ease,
+        opacity 0.28s ease,
+        border-color 0.28s ease;
 }
 
 .btn:hover{
@@ -484,6 +504,12 @@ body{
     object-fit: cover;
 }
 
+.about-picture {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
 .about-img--tall {
     aspect-ratio: 3 / 4.5;
 }
@@ -611,6 +637,7 @@ body{
 }
 
 .bridal-stage {
+    position: relative;
     width: min(600px, 70vw);
     aspect-ratio: 1;
     cursor: grab;
@@ -618,8 +645,28 @@ body{
     user-select: none;
 }
 
+.bridal-stage.is-loading {
+    cursor: wait;
+}
+
 .bridal-stage:active {
     cursor: grabbing;
+}
+
+.bridal-stage-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.bridal-stage-frame.is-active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .bridal-stage img {
@@ -718,10 +765,18 @@ body{
     object-fit: cover;
 }
 
+.portfolio-picture {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+.portfolio-picture--left .portfolio-image--left,
 .portfolio-image--left {
     aspect-ratio: 3 / 4;
 }
 
+.portfolio-picture--right .portfolio-image--right,
 .portfolio-image--right {
     aspect-ratio: 3 / 5;
 }
@@ -751,6 +806,11 @@ body{
     min-width: 0;
 }
 
+.portfolio-picture-bottom {
+    display: block;
+    width: 100%;
+}
+
 .portfolio-image-bottom {
     display: block;
     width: 100%;
@@ -759,22 +819,27 @@ body{
 }
 
 /* ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´ ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡: Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²ÃƒÂÃ‚Â° 2 Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾, Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚Â° 3 */
+.portfolio-col-bottom--left .portfolio-picture-bottom:first-child .portfolio-image-bottom,
 .portfolio-col-bottom--left .portfolio-image-bottom:first-child {
     aspect-ratio: 3 / 4.8;
 }
 
+.portfolio-col-bottom--left .portfolio-picture-bottom:last-child .portfolio-image-bottom,
 .portfolio-col-bottom--left .portfolio-image-bottom:last-child {
     aspect-ratio: 3 / 4.8;
 }
 
+.portfolio-col-bottom--right .portfolio-picture-bottom:nth-child(1) .portfolio-image-bottom,
 .portfolio-col-bottom--right .portfolio-image-bottom:nth-child(1) {
     aspect-ratio: 3 / 3.5;
 }
 
+.portfolio-col-bottom--right .portfolio-picture-bottom:nth-child(2) .portfolio-image-bottom,
 .portfolio-col-bottom--right .portfolio-image-bottom:nth-child(2) {
     aspect-ratio: 3 / 3.5;
 }
 
+.portfolio-col-bottom--right .portfolio-picture-bottom:nth-child(3) .portfolio-image-bottom,
 .portfolio-col-bottom--right .portfolio-image-bottom:nth-child(3) {
     aspect-ratio: 3 / 3.5;
 }
@@ -1071,6 +1136,67 @@ body{
     opacity: 0.85;
 }
 
+.legal-meta {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+.legal-doc {
+    max-width: 760px;
+}
+
+.legal-section {
+    margin: clamp(20px, 3vw, 28px) 0 0;
+}
+
+.legal-section h2 {
+    margin: 0 0 10px;
+    font-size: clamp(16px, 2.4vw, 18px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-primary);
+}
+
+.legal-section p {
+    margin: 0 0 10px;
+    font-size: clamp(14px, 2.1vw, 15px);
+    line-height: 1.55;
+    color: var(--color-primary);
+}
+
+.legal-section ul {
+    margin: 0 0 12px;
+    padding-left: 1.25em;
+    font-size: clamp(14px, 2.1vw, 15px);
+    line-height: 1.55;
+    color: var(--color-primary);
+}
+
+.legal-section li {
+    margin-bottom: 6px;
+}
+
+.legal-section a {
+    color: var(--color-primary);
+}
+
+.footer-portfolio {
+    margin: 8px 0 0;
+    max-width: 280px;
+    font-size: clamp(11px, 1.8vw, 13px);
+    line-height: 1.35;
+    color: var(--color-primary);
+    opacity: 0.65;
+}
+
+.footer-col--right .footer-portfolio {
+    text-align: right;
+    margin-left: auto;
+}
+
 .legal-note {
     margin: 16px 0 0;
     font-size: 14px;
@@ -1172,6 +1298,7 @@ body{
 
 .footer-link--mail {
     text-underline-offset: 3px;
+    word-break: break-all;
 }
 
 .footer-copy {
@@ -1201,14 +1328,20 @@ body{
 .booking-panel {
     width: 100%;
     background: #fff;
-    padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px);
     scroll-margin-top: 88px;
+}
+
+.booking-panel-clip {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
 }
 
 .booking-panel-inner {
     position: relative;
     max-width: 720px;
     margin-inline: auto;
+    padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px);
 }
 
 .booking-title-row {
@@ -1230,6 +1363,12 @@ body{
     cursor: pointer;
     flex-shrink: 0;
     margin-bottom: 6px;
+    opacity: 0.7;
+    transition: opacity 0.28s ease;
+}
+
+.booking-close:hover {
+    opacity: 1;
 }
 
 .booking-close img {
@@ -1324,6 +1463,7 @@ body{
     box-sizing: border-box;
     cursor: pointer;
     text-align: left;
+    transition: border-color 0.25s ease, border-radius 0.25s ease;
 }
 
 .booking-dropdown.is-open .booking-dropdown-trigger {
@@ -1349,11 +1489,22 @@ body{
     width: 18px;
     height: 8px;
     display: block;
-    transition: transform 0.25s ease;
+    transition: transform 0.28s ease;
 }
 
 .booking-dropdown.is-open .booking-dropdown-chevron {
     transform: rotate(180deg);
+}
+
+.booking-dropdown-panel {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.booking-dropdown.is-open .booking-dropdown-panel {
+    pointer-events: auto;
 }
 
 .booking-dropdown-list {
@@ -1688,6 +1839,11 @@ body{
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 2px;
+    transition: opacity 0.28s ease, color 0.28s ease;
+}
+
+.booking-consent-link:hover {
+    color: var(--color-button-bridal-bouquet);
 }
 
 .booking-check--consent {
@@ -1898,6 +2054,11 @@ body{
     .footer-col--right {
         align-items: flex-start;
         text-align: left;
+    }
+
+    .footer-col--right .footer-portfolio {
+        text-align: left;
+        margin-left: 0;
     }
 
     .footer-link {
@@ -2126,8 +2287,8 @@ body{
         font-size: 11px;
         white-space: normal;
     }
-    .booking-panel {
-        padding-bottom: 0px;
+    .booking-panel-inner {
+        padding-bottom: 0;
     }
 }
 
@@ -2328,12 +2489,12 @@ body{
 
     /* ——— Booking form 2K ——— */
     .booking-panel {
-        padding: 80px 0 96px;
         scroll-margin-top: 120px;
     }
 
     .booking-panel-inner {
         max-width: 1100px;
+        padding: 80px 0 96px;
     }
 
     .booking-title-row {
@@ -2532,5 +2693,190 @@ body{
     .booking-submit {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* ——— 404 ——— */
+.not-found {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-background);
+    overflow: hidden;
+}
+
+.not-found .header {
+    position: relative;
+    flex-shrink: 0;
+    z-index: 3;
+}
+
+.not-found-main {
+    flex: 1 1 auto;
+    position: relative;
+    min-height: 0;
+}
+
+/* Текст + кнопка: по вертикали центр, чуть выше */
+.not-found-copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--container-px);
+    pointer-events: none;
+}
+
+.not-found-copy .not-found-btn {
+    pointer-events: auto;
+}
+
+.not-found-title {
+    margin: 0 0 clamp(20px, 2.5vh, 28px);
+    max-width: 100%;
+    font-family: var(--font-primary);
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.35;
+    color: var(--color-primary);
+}
+
+.not-found-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    background-color: var(--color-button-bridal-bouquet);
+    color: var(--color-button-bridal-bouquet-text);
+    border: none;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: clamp(13px, 1.6vw, 16px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.not-found-btn:hover {
+    background-color: var(--color-button-bridal-bouquet-hover);
+    color: var(--color-button-bridal-bouquet-text);
+}
+
+/* Цифры у нижнего края, без большого зазора до текста */
+.not-found-visual {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: min(56vh, 620px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.not-found-404 {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    user-select: none;
+}
+
+@media (max-width: 900px) {
+    .not-found-copy {
+        top: 36%;
+    }
+
+    .not-found-visual {
+        height: min(52vh, 480px);
+    }
+}
+
+@media (max-width: 716px) {
+    .not-found-copy {
+        top: 34%;
+    }
+
+    .not-found-title {
+        max-width: 14em;
+        font-size: clamp(18px, 5.2vw, 24px);
+    }
+
+    .not-found-visual {
+        height: min(48vh, 380px);
+    }
+}
+
+@media (max-width: 500px) {
+    .not-found-title {
+        margin-bottom: 28px;
+    }
+
+    .not-found-btn {
+        padding: 9px 20px;
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 700px) {
+    .not-found-copy {
+        top: 32%;
+    }
+
+    .not-found-visual {
+        height: min(58vh, 420px);
+    }
+}
+
+@media (min-width: 2560px) {
+    .not-found-title {
+        font-size: 44px;
+    }
+
+    .not-found-btn {
+        padding: 18px 48px;
+        font-size: 22px;
+    }
+
+    .not-found-visual {
+        height: min(54vh, 780px);
+    }
+}
+
+/* ——— Scroll reveal (GSAP owns motion) ——— */
+.reveal-child {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal-child {
+        opacity: 1;
+        will-change: auto;
+    }
+
+    .btn,
+    .nav-link,
+    .nav-look-date,
+    .booking-dropdown-chevron {
+        transition: none;
     }
 }

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 
-function Header() {
+const Header = forwardRef(function Header(_props, ref) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function Header() {
   const closeMenu = () => setOpen(false)
 
   return (
-    <header className="header">
+    <header className="header" ref={ref}>
       <nav
         className="nav container container--landing"
         aria-label="Основная навигация"
@@ -92,6 +92,6 @@ function Header() {
       </nav>
     </header>
   )
-}
+})
 
 export default Header

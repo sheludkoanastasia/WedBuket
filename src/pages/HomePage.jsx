@@ -9,6 +9,11 @@ import LookDate from '../components/LookDate'
 import BridalBouquet from '../components/BridalBouquet'
 import Works from '../components/Works'
 import { getGsap, prefersReducedMotion } from '../lib/gsap'
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  usePageMeta,
+} from '../hooks/usePageMeta'
 
 function lockPageScroll() {
   const html = document.documentElement
@@ -52,6 +57,8 @@ function HomePage() {
   const heroWrapRef = useRef(null)
   const restRef = useRef(null)
   const introStarted = useRef(false)
+
+  usePageMeta(DEFAULT_TITLE, DEFAULT_DESCRIPTION)
 
   const onHeroReady = useCallback(() => setHeroReady(true), [])
 

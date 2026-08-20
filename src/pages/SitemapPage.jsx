@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import LegalLayout from '../components/LegalLayout'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const SECTIONS = [
   { to: '/#hero', label: 'Главная' },
@@ -25,6 +26,11 @@ const CONTACTS = [
 ]
 
 function SitemapPage() {
+  usePageMeta(
+    'Карта сайта — WedBuket',
+    'Карта сайта WedBuket: разделы главной, букет 360°, свободные даты и правовые страницы.'
+  )
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

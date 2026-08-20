@@ -29,16 +29,16 @@ function About() {
                 className="about-picture"
                 imgClassName="about-img"
                 webp="/images/about1.webp"
-                fallback="/images/about1.png"
-                alt=""
+                fallback="/images/about1.webp"
+                alt="Детали свадебной флористики: бутоны и зелень крупным планом"
                 loading="lazy"
               />
               <Picture
                 className="about-picture"
                 imgClassName="about-img"
                 webp="/images/about2.webp"
-                fallback="/images/about2.png"
-                alt=""
+                fallback="/images/about2.webp"
+                alt="Свадебный букет невесты в руках"
                 loading="lazy"
               />
             </div>
@@ -50,8 +50,8 @@ function About() {
               className="about-picture"
               imgClassName="about-img about-img--tall"
               webp="/images/about3.webp"
-              fallback="/images/about3.png"
-              alt=""
+              fallback="/images/about3.webp"
+              alt="Невеста с букетом на свадебной площадке"
               loading="lazy"
             />
             <div className="about-actions">

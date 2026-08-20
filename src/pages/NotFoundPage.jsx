@@ -1,8 +1,14 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 function NotFoundPage() {
+  usePageMeta(
+    'Страница не найдена — WedBuket',
+    'Запрашиваемая страница не найдена. Вернитесь на главную WedBuket.'
+  )
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

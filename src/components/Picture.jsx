@@ -1,5 +1,5 @@
 /**
- * WebP с запасным PNG/JPG/SVG. Оригиналы не удаляем.
+ * WebP через <picture>; fallback — тот же webp или другой формат при необходимости.
  */
 function Picture({
   webp,

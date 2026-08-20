@@ -1,10 +1,16 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import LegalLayout from '../components/LegalLayout'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const CONTACT_EMAIL = 'sheludkoanastasiakrasnodar@gmail.com'
 
 function TermsPage() {
+  usePageMeta(
+    'Пользовательское соглашение — WedBuket',
+    'Пользовательское соглашение сайта WedBuket: условия использования портфолио-проекта свадебной флористики.'
+  )
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

@@ -107,7 +107,7 @@ function Hero({ onReady }) {
         <img
           className="hero-image hero-image--base"
           src={HERO_IMAGES[0]}
-          alt=""
+          alt="Свадебный букет"
           decoding="async"
           fetchPriority="high"
           draggable={false}
@@ -119,6 +119,7 @@ function Hero({ onReady }) {
           decoding="async"
           fetchPriority="high"
           draggable={false}
+          aria-hidden="true"
         />
       </div>
 

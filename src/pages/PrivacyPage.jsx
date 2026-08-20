@@ -1,10 +1,16 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import LegalLayout from '../components/LegalLayout'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const CONTACT_EMAIL = 'sheludkoanastasiakrasnodar@gmail.com'
 
 function PrivacyPage() {
+  usePageMeta(
+    'Политика обработки персональных данных — WedBuket',
+    'Политика обработки персональных данных портфолио-проекта WedBuket: цели, состав данных, права пользователя и контакты.'
+  )
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

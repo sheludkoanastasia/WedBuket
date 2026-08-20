@@ -15,8 +15,8 @@ function Portfolio() {
                 className="portfolio-picture portfolio-picture--left"
                 imgClassName="portfolio-image portfolio-image--left"
                 webp="/images/portfolio1.webp"
-                fallback="/images/portfolio1.png"
-                alt=""
+                fallback="/images/portfolio1.webp"
+                alt="Свадебный стол с цветочной композицией"
                 loading="lazy"
               />
             </div>
@@ -26,8 +26,8 @@ function Portfolio() {
             className="portfolio-picture portfolio-picture--right"
             imgClassName="portfolio-image portfolio-image--right"
             webp="/images/portfolio2.webp"
-            fallback="/images/portfolio2.png"
-            alt=""
+            fallback="/images/portfolio2.webp"
+            alt="Оформление церемонии живыми цветами"
             loading="lazy"
           />
         </div>
@@ -40,16 +40,16 @@ function Portfolio() {
               className="portfolio-picture-bottom"
               imgClassName="portfolio-image-bottom"
               webp="/images/portfolio3.webp"
-              fallback="/images/portfolio3.png"
-              alt=""
+              fallback="/images/portfolio3.webp"
+              alt="Букет невесты на фоне свадебного декора"
               loading="lazy"
             />
             <Picture
               className="portfolio-picture-bottom"
               imgClassName="portfolio-image-bottom"
               webp="/images/portfolio8.webp"
-              fallback="/images/portfolio8.png"
-              alt=""
+              fallback="/images/portfolio8.webp"
+              alt="Цветочная арка на свадебной церемонии"
               loading="lazy"
             />
           </div>
@@ -58,24 +58,24 @@ function Portfolio() {
               className="portfolio-picture-bottom"
               imgClassName="portfolio-image-bottom"
               webp="/images/portfolio4.webp"
-              fallback="/images/portfolio4.png"
-              alt=""
+              fallback="/images/portfolio4.webp"
+              alt="Банкетные композиции на гостевых столах"
               loading="lazy"
             />
             <Picture
               className="portfolio-picture-bottom"
               imgClassName="portfolio-image-bottom"
               webp="/images/portfolio5.webp"
-              fallback="/images/portfolio5.png"
-              alt=""
+              fallback="/images/portfolio5.webp"
+              alt="Детали флористики: бутоньерка и цветы"
               loading="lazy"
             />
             <Picture
               className="portfolio-picture-bottom"
               imgClassName="portfolio-image-bottom"
               webp="/images/portfolio7.webp"
-              fallback="/images/portfolio7.png"
-              alt=""
+              fallback="/images/portfolio7.webp"
+              alt="Свадебная фотозона с цветочным оформлением"
               loading="lazy"
             />
           </div>

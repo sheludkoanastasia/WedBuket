@@ -1341,7 +1341,9 @@ html.site-scroll-lock {
     position: relative;
     max-width: 720px;
     margin-inline: auto;
-    padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px);
+    /* только вертикаль — горизонталь даёт .container (var(--container-px)) */
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(48px, 7vw, 80px);
 }
 
 .booking-title-row {
@@ -2494,7 +2496,8 @@ html.site-scroll-lock {
 
     .booking-panel-inner {
         max-width: 1100px;
-        padding: 80px 0 96px;
+        padding-top: 80px;
+        padding-bottom: 96px;
     }
 
     .booking-title-row {

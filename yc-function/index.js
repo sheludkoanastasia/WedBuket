@@ -1,5 +1,4 @@
 
-
 const YC_BASE = 'https://api.yclients.com/api/v1'
 
 const ALLOWED_ORIGINS = [
@@ -8,6 +7,12 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ]
+
+/** Лимит заявок book: на IP, в памяти инстанса функции. */
+const BOOK_LIMIT = 5
+const BOOK_WINDOW_MS = 10 * 60 * 1000
+/** @type {Map<string, number[]>} */
+const bookHitsByIp = new Map()
 
 function requestOrigin(event) {
   const headers = event?.headers || {}
@@ -29,12 +34,64 @@ function corsHeaders(event) {
   }
 }
 
-function json(statusCode, data, event) {
+function json(statusCode, data, event, extraHeaders = {}) {
   return {
     statusCode,
-    headers: corsHeaders(event),
+    headers: { ...corsHeaders(event), ...extraHeaders },
     body: JSON.stringify(data),
   }
+}
+
+function clientIp(event) {
+  const headers = event?.headers || {}
+  const forwarded =
+    headers['x-forwarded-for'] ||
+    headers['X-Forwarded-For'] ||
+    headers['x-client-ip'] ||
+    headers['X-Client-Ip'] ||
+    ''
+  if (forwarded) {
+    return String(forwarded).split(',')[0].trim() || 'unknown'
+  }
+  return (
+    headers['x-real-ip'] ||
+    headers['X-Real-Ip'] ||
+    event.requestContext?.identity?.sourceIp ||
+    event.requestContext?.http?.sourceIp ||
+    'unknown'
+  )
+}
+
+function pruneBookHits(now) {
+  if (bookHitsByIp.size <= 2000) return
+  for (const [ip, hits] of bookHitsByIp) {
+    const kept = hits.filter((t) => now - t < BOOK_WINDOW_MS)
+    if (!kept.length) bookHitsByIp.delete(ip)
+    else bookHitsByIp.set(ip, kept)
+  }
+}
+
+/** @returns {{ ok: true } | { ok: false, retryAfterSec: number }} */
+function consumeBookRateLimit(ip) {
+  const now = Date.now()
+  const key = ip || 'unknown'
+  let hits = (bookHitsByIp.get(key) || []).filter(
+    (t) => now - t < BOOK_WINDOW_MS
+  )
+
+  if (hits.length >= BOOK_LIMIT) {
+    bookHitsByIp.set(key, hits)
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((hits[0] + BOOK_WINDOW_MS - now) / 1000)
+    )
+    return { ok: false, retryAfterSec }
+  }
+
+  hits.push(now)
+  bookHitsByIp.set(key, hits)
+  pruneBookHits(now)
+  return { ok: true }
 }
 
 function ycHeaders() {
@@ -134,6 +191,20 @@ module.exports.handler = async function (event) {
       method === 'POST' &&
       (action === 'book' || action === '' || path.endsWith('/book'))
     ) {
+      const rate = consumeBookRateLimit(clientIp(event))
+      if (!rate.ok) {
+        return json(
+          429,
+          {
+            error:
+              'Слишком много заявок. Подождите немного и попробуйте снова.',
+            retry_after: rate.retryAfterSec,
+          },
+          event,
+          { 'Retry-After': String(rate.retryAfterSec) }
+        )
+      }
+
       const body = parseBody(event)
       const phone = String(body.phone || '').replace(/\D/g, '')
       const customFields = body.custom_fields || {}
